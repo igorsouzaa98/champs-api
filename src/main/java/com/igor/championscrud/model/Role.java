@@ -8,7 +8,7 @@ import java.util.Objects;
 
 @Entity
 
-public class Role  {
+public class Role {
 
 
     @Id
@@ -17,7 +17,7 @@ public class Role  {
     private String nome;
 
     @OneToMany(mappedBy = "role") // Linkando essa categoria a outra "Uma para muitas"
-    private  List<Champions> champions = new ArrayList<>();
+    private final List<Champions> champions = new ArrayList<>();
 
 
     public Role() {
@@ -46,16 +46,10 @@ public class Role  {
         this.nome = nome;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Role role)) return false;
-        return Objects.equals(id, role.id);
-    }
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
+
+    public List<Champions> getChampions() {
+        return champions;
     }
 }
 

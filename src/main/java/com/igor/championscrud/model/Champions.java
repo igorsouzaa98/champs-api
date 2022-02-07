@@ -69,15 +69,4 @@ public class Champions {
         this.role = role;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Champions champions)) return false;
-        return Objects.equals(id, champions.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
 }
