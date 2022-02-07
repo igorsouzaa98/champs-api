@@ -18,6 +18,7 @@ public class DbService {
     private ChampionsRepository championsRepository;
 
     public void instaciaBaseDeDados(){
+
         Role jungler = new Role(null, "Jungler");
         Role adc = new Role(null, "AD Carry");
         Role sup = new Role(null, "Suporte");
