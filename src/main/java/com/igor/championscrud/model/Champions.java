@@ -1,12 +1,21 @@
 package com.igor.championscrud.model;
 
+import javax.persistence.*;
 import java.util.Objects;
 
+@Entity
 public class Champions {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
     private String damage;
     private String tier;
+
+    @ManyToOne //linkando uma classe na outra "Muitos para um"
+    @JoinColumn(name = "role_id")
     private Role role;
 
     public Champions(){

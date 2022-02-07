@@ -1,15 +1,24 @@
 package com.igor.championscrud.model;
 
+import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Role {
+@Entity
+
+public class Role  {
+
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
 
-
+    @OneToMany(mappedBy = "role") // Linkando essa categoria a outra "Uma para muitas"
     private  List<Champions> champions = new ArrayList<>();
+
 
     public Role() {
         super();
