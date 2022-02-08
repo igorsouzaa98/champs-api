@@ -23,4 +23,9 @@ public class RoleService {
     public List<Role>findAll(){
         return repository.findAll();
     }
+
+    public Role create(Role obj){
+        obj.setId(null);
+        return repository.save(obj);
+    }
 }
