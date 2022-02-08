@@ -1,5 +1,6 @@
 package com.igor.championscrud.service;
 
+import com.igor.championscrud.DTOs.RoleDTO;
 import com.igor.championscrud.model.Champions;
 import com.igor.championscrud.model.Role;
 import com.igor.championscrud.repository.RoleRepository;
@@ -12,6 +13,7 @@ import java.util.Optional;
 
 @Service
 public class RoleService {
+
 
     @Autowired
     private RoleRepository repository;
@@ -26,6 +28,11 @@ public class RoleService {
 
     public Role create(Role obj){
         obj.setId(null);
+        return repository.save(obj);
+    }
+    public Role update(Long id, RoleDTO objDTO){
+        Role obj = findById(id);
+        obj.setNome(objDTO.getNome());
         return repository.save(obj);
     }
 }
