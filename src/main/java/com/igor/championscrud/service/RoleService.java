@@ -1,9 +1,9 @@
 package com.igor.championscrud.service;
 
 import com.igor.championscrud.DTOs.RoleDTO;
-import com.igor.championscrud.model.Champions;
 import com.igor.championscrud.model.Role;
 import com.igor.championscrud.repository.RoleRepository;
+import com.igor.championscrud.service.exceptions.DataIntegrityViolationException;
 import com.igor.championscrud.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -38,6 +38,10 @@ public class RoleService {
 
     public void delete(Long id) {
         findById(id);
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (DataIntegrityViolationException e){
+            throw new DataIntegrityViolationException("Role não pode ser deletada! Possui livros associados");
+        }
     }
 }

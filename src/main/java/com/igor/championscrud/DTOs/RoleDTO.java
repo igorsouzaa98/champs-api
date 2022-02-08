@@ -2,12 +2,10 @@ package com.igor.championscrud.DTOs;
 
 import com.igor.championscrud.model.Role;
 
-import java.io.Serial;
+//here
 import java.io.Serializable;
 
 public class RoleDTO implements Serializable {
-    @Serial
-    private static final long serialVersionUID = 1L;
 
     private Long id;
     private String nome;

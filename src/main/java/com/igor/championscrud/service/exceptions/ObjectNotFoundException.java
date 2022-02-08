@@ -1,12 +1,9 @@
 package com.igor.championscrud.service.exceptions;
 
 
-import java.io.Serial;
+//here
 
 public class ObjectNotFoundException extends RuntimeException{
-
-    @Serial
-    private static final long  serialVersionUID =1L;
 
     public ObjectNotFoundException(String message) {
         super(message);
