@@ -1,5 +1,7 @@
 package com.igor.championscrud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Objects;
 
@@ -14,6 +16,7 @@ public class Champions {
     private String damage;
     private String tier;
 
+    @JsonIgnore
     @ManyToOne //linkando uma classe na outra "Muitos para um"
     @JoinColumn(name = "role_id")
     private Role role;
