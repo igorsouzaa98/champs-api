@@ -35,4 +35,9 @@ public class RoleService {
         obj.setNome(objDTO.getNome());
         return repository.save(obj);
     }
+
+    public void delete(Long id) {
+        findById(id);
+        repository.deleteById(id);
+    }
 }

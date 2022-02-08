@@ -42,6 +42,11 @@ public class RoleResources {
     public ResponseEntity<RoleDTO> update(@PathVariable Long id, @RequestBody RoleDTO objDTO){
         Role newObj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new RoleDTO(newObj));
+    }
 
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id){
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 }
