@@ -1,22 +1,20 @@
 package com.igor.championscrud.DTOs;
 
-import com.igor.championscrud.model.Role;
-
+import com.igor.championscrud.model.Champions;
 
 import java.io.Serializable;
 
-public class RoleDTO implements Serializable {
-
+public class ChampionDTO implements Serializable {
     private Long id;
     private String nome;
 
-    public RoleDTO(){
+    public ChampionDTO() {
         super();
     }
 
-    public RoleDTO(Role obj) {
+    public ChampionDTO(Champions obj) {
         this.id = obj.getId();
-        this.nome =obj.getNome();
+        this.nome = obj.getNome();
     }
 
     public Long getId() {
