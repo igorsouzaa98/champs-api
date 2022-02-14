@@ -36,6 +36,7 @@ public class RoleService {
         return repository.save(obj);
     }
 
+
     public void delete(Long id) {
         findById(id);
         try {
