@@ -29,4 +29,17 @@ public class ChampionsService {
         championsService.findById(id_rol);
         return repository.findAllByRole(id_rol);
     }
+
+    public Champions update(Long id, Champions obj) {
+        Champions newObj = findById(id);
+        updateData(newObj, obj);
+        return repository.save(newObj);
+    }
+
+    private void updateData(Champions newObj, Champions obj) {
+        newObj.setNome(obj.getNome());
+        newObj.setDamage(obj.getDamage());
+        newObj.setRole(obj.getRole());
+        newObj.setTier(obj.getTier());
+    }
 }
