@@ -1,11 +1,16 @@
 package com.igor.championscrud.DTOs;
 
 import com.igor.championscrud.model.Champions;
+import org.hibernate.validator.constraints.Length;
 
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 public class ChampionDTO implements Serializable {
     private Long id;
+
+    @NotEmpty(message = "Campo 'nome' é requerido")
+    @Length(min = 3, max = 30, message = "O Campo 'nome' deve ter entre 3 e 30 caracteres")
     private String nome;
 
     public ChampionDTO() {

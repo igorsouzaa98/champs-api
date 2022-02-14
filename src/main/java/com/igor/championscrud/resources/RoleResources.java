@@ -8,10 +8,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/roles")
 public class RoleResources {
@@ -32,14 +34,14 @@ public class RoleResources {
     }
 
     @PostMapping
-    public ResponseEntity<Role> create(@RequestBody Role obj){
+    public ResponseEntity<Role> create(@Valid @RequestBody Role obj){
         obj = service.create(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(obj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<RoleDTO> update(@PathVariable Long id, @RequestBody RoleDTO objDTO){
+    public ResponseEntity<RoleDTO> update(@PathVariable Long id, @Valid @RequestBody RoleDTO objDTO){
         Role newObj = service.update(id, objDTO);
         return ResponseEntity.ok().body(new RoleDTO(newObj));
     }

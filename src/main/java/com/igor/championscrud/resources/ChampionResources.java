@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
-
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/champions")
 public class ChampionResources {
@@ -34,7 +35,7 @@ public class ChampionResources {
         return ResponseEntity.ok().body(listDTO);
     }
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Champions>update(@PathVariable Long id, @RequestBody Champions obj){
+    public ResponseEntity<Champions>update(@PathVariable Long id, @Valid @RequestBody Champions obj){
         Champions newObj = service.update(id, obj);
         return ResponseEntity.ok().body(newObj);
     }
@@ -45,7 +46,7 @@ public class ChampionResources {
     }
 
     @PostMapping
-    public ResponseEntity<Champions> create(@RequestParam(value = "role", defaultValue = "0") Long id_rol, @RequestBody Champions obj){
+    public ResponseEntity<Champions> create(@RequestParam(value = "role", defaultValue = "0") Long id_rol,@Valid @RequestBody Champions obj){
 
         Champions newObj = service.create(id_rol, obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/champions/{id}").buildAndExpand(newObj.getId()).toUri();

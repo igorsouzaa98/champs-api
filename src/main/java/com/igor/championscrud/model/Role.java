@@ -1,6 +1,9 @@
 package com.igor.championscrud.model;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,8 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotEmpty(message = "Campo 'nome' é requerido")
+    @Length(min = 3, max = 16, message = "O Campo 'nome' deve ter entre 3 e 16 caracteres")
     private String nome;
 
     @OneToMany(mappedBy = "role") // Linkando essa categoria a outra "Uma para muitas"

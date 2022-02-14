@@ -1,8 +1,10 @@
 package com.igor.championscrud.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 import java.util.Objects;
 
 @Entity
@@ -12,8 +14,14 @@ public class Champions {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotEmpty(message = "Campo 'nome' é requerido")
+    @Length(min = 3, max = 30, message = "O Campo 'nome' deve ter entre 3 e 30 caracteres")
     private String nome;
+    @NotEmpty(message = "Campo 'Damage' é requerido")
+    @Length(min = 3, max = 30, message = "O Campo 'damage' deve ter entre 3 e 30 caracteres")
     private String damage;
+    @NotEmpty(message = "Campo 'tier' é requerido")
+    @Length(min = 1, max = 16, message = "O Campo 'tier' deve ter entre 1 e 16 caracteres")
     private String tier;
 
     @JsonIgnore
