@@ -51,5 +51,10 @@ public class ChampionResources {
         URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/champions/{id}").buildAndExpand(newObj.getId()).toUri();
         return ResponseEntity.created(uri).build();
     }
+    @DeleteMapping(value = "/{id}")
+    public ResponseEntity<Void>delete(@PathVariable Long id){
+    service.delete(id);
+    return ResponseEntity.noContent().build();
+    }
 
 }

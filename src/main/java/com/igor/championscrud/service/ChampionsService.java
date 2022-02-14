@@ -6,6 +6,7 @@ import com.igor.championscrud.model.Role;
 import com.igor.championscrud.repository.ChampionsRepository;
 import com.igor.championscrud.service.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -49,5 +50,12 @@ public class ChampionsService {
         Role rol = roleService.findById(id_rol);
         obj.setRole(rol);
         return repository.save(obj);
+    }
+
+
+    public void delete(Long id) {
+        Champions obj = findById(id);
+        repository.delete(obj);
+
     }
 }
