@@ -20,7 +20,7 @@ public class DbService {
     public void instaciaBaseDeDados(){
 
         Role jungler = new Role(null, "Jungler");
-        Role adc = new Role(null, "AD Carry");
+        Role adc = new Role(null, "Atirador");
         Role sup = new Role(null, "Suporte");
         Role mid = new Role (null, "Mid Laner");
         Role top = new Role(null, "Top Laner");
